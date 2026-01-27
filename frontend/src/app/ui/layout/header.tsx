@@ -6,14 +6,16 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import { useTheme } from '../../libs/context/ThemeContext';
+import { useAppDispatch, useAppSelector } from '../../libs/state/hooks';
+import { toggleTheme } from '../../libs/state/themeSlice';
 
 const MotionButton = motion.create(Button);
 const MotionIconButton = motion.create(IconButton);
 
 export default function Header() {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
-  const { mode, toggleTheme } = useTheme();
+  const dispatch = useAppDispatch();
+  const mode = useAppSelector((state) => state.theme.mode);
 
   const navItems = [
     { label: 'Home', href: '/' },
@@ -101,7 +103,7 @@ export default function Header() {
               whileTap={{ scale: 0.9 }}
             >
               <MotionIconButton
-                onClick={toggleTheme}
+                onClick={() => dispatch(toggleTheme())}
                 sx={{
                   color: 'inherit',
                   ml: 2,
