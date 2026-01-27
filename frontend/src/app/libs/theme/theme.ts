@@ -25,23 +25,47 @@ const lightTheme = createTheme({
   typography: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
-      fontSize: '2.5rem',
+      fontSize: 'clamp(1.5rem, 8vw, 3.5rem)',
       fontWeight: 700,
       color: '#000000',
+      lineHeight: 1.2,
     },
     h2: {
-      fontSize: '2rem',
+      fontSize: 'clamp(1.25rem, 6vw, 2.5rem)',
       fontWeight: 700,
       color: '#000000',
+      lineHeight: 1.3,
     },
     h3: {
-      fontSize: '1.5rem',
+      fontSize: 'clamp(1rem, 4vw, 1.75rem)',
+      fontWeight: 600,
+      color: '#000000',
+      lineHeight: 1.4,
+    },
+    h4: {
+      fontSize: 'clamp(0.875rem, 3vw, 1.5rem)',
+      fontWeight: 600,
+      color: '#000000',
+    },
+    h5: {
+      fontSize: 'clamp(0.75rem, 2.5vw, 1.25rem)',
+      fontWeight: 600,
+      color: '#000000',
+    },
+    h6: {
+      fontSize: 'clamp(0.75rem, 2vw, 1rem)',
       fontWeight: 600,
       color: '#000000',
     },
     body1: {
-      fontSize: '1rem',
+      fontSize: 'clamp(0.875rem, 2vw, 1.1rem)',
       color: '#000000',
+      lineHeight: 1.6,
+    },
+    body2: {
+      fontSize: 'clamp(0.75rem, 1.5vw, 1rem)',
+      color: '#666666',
+      lineHeight: 1.5,
     },
   },
   components: {
@@ -135,34 +159,59 @@ const darkTheme = createTheme({
       dark: '#E0E0E0',
     },
     background: {
-      default: '#1A1A1A', // Cinza escuro
-      paper: '#2D2D2D',
+      default: '#0F0F0F', // Preto mais puro
+      paper: '#1F1F1F', // Cinza mais escuro
     },
     text: {
-      primary: '#FFFFFF',
-      secondary: '#B0B0B0',
+      primary: '#F0F0F0', // Branco com pouco tom
+      secondary: '#C0C0C0', // Cinza claro
     },
+    divider: 'rgba(0, 168, 107, 0.2)',
   },
   typography: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
-      fontSize: '2.5rem',
+      fontSize: 'clamp(1.5rem, 8vw, 3.5rem)',
       fontWeight: 700,
-      color: '#FFFFFF',
+      color: '#F0F0F0',
+      lineHeight: 1.2,
     },
     h2: {
-      fontSize: '2rem',
+      fontSize: 'clamp(1.25rem, 6vw, 2.5rem)',
       fontWeight: 700,
-      color: '#FFFFFF',
+      color: '#F0F0F0',
+      lineHeight: 1.3,
     },
     h3: {
-      fontSize: '1.5rem',
+      fontSize: 'clamp(1rem, 4vw, 1.75rem)',
       fontWeight: 600,
-      color: '#FFFFFF',
+      color: '#F0F0F0',
+      lineHeight: 1.4,
+    },
+    h4: {
+      fontSize: 'clamp(0.875rem, 3vw, 1.5rem)',
+      fontWeight: 600,
+      color: '#F0F0F0',
+    },
+    h5: {
+      fontSize: 'clamp(0.75rem, 2.5vw, 1.25rem)',
+      fontWeight: 600,
+      color: '#F0F0F0',
+    },
+    h6: {
+      fontSize: 'clamp(0.75rem, 2vw, 1rem)',
+      fontWeight: 600,
+      color: '#F0F0F0',
     },
     body1: {
-      fontSize: '1rem',
-      color: '#FFFFFF',
+      fontSize: 'clamp(0.875rem, 2vw, 1.1rem)',
+      color: '#F0F0F0',
+      lineHeight: 1.6,
+    },
+    body2: {
+      fontSize: 'clamp(0.75rem, 1.5vw, 1rem)',
+      color: '#C0C0C0',
+      lineHeight: 1.5,
     },
   },
   components: {
@@ -197,12 +246,12 @@ const darkTheme = createTheme({
       styleOverrides: {
         root: {
           border: '2px solid #00A86B',
-          borderRadius: '8px',
-          backgroundColor: '#2D2D2D',
+          borderRadius: '12px',
+          backgroundColor: '#1F1F1F',
           transition: 'all 0.3s ease',
           '&:hover': {
             borderColor: '#00D77D',
-            boxShadow: '0 8px 24px rgba(0, 168, 107, 0.3)',
+            boxShadow: '0 8px 24px rgba(0, 168, 107, 0.4)',
             transform: 'translateY(-4px)',
           },
         },
@@ -235,10 +284,21 @@ const darkTheme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: '#1A1A1A',
-          color: '#FFFFFF',
+          backgroundColor: '#0F0F0F',
+          color: '#F0F0F0',
           borderBottom: '2px solid #00A86B',
-          boxShadow: '0 2px 8px rgba(0, 168, 107, 0.2)',
+          boxShadow: '0 2px 8px rgba(0, 168, 107, 0.3)',
+        },
+      },
+    },
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          padding: 'clamp(1rem, 4vw, 2rem)',
+          '@media (max-width: 600px)': {
+            paddingLeft: 'clamp(0.5rem, 2vw, 1rem)',
+            paddingRight: 'clamp(0.5rem, 2vw, 1rem)',
+          },
         },
       },
     },

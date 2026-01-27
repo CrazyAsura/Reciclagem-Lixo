@@ -38,20 +38,18 @@ export default function Home() {
   ];
 
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
+    <Container maxWidth="lg" sx={{ py: { xs: 4, md: 8 } }}>
       {/* Hero Section */}
       <MotionBox
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        sx={{ textAlign: 'center', mb: 8 }}
+        sx={{ textAlign: 'center', mb: { xs: 4, md: 8 } }}
       >
         <Typography
           variant="h1"
           sx={{
             mb: 2,
-            fontSize: { xs: '2rem', md: '3.5rem' },
-            fontWeight: 700,
             background: 'linear-gradient(135deg, #000000 0%, #00A86B 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
@@ -66,11 +64,12 @@ export default function Home() {
             mb: 4,
             color: '#666666',
             fontWeight: 400,
+            lineHeight: 1.6,
           }}
         >
           Denuncie poluição ambiental, receba cursos e conecte-se com a comunidade sustentável
         </Typography>
-        <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
+        <Box sx={{ display: 'flex', gap: { xs: 1, sm: 2 }, justifyContent: 'center', flexWrap: 'wrap' }}>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link href="/about">
               <Button
@@ -80,8 +79,9 @@ export default function Home() {
                   backgroundColor: '#00A86B',
                   color: '#FFFFFF',
                   fontWeight: 600,
-                  px: 4,
-                  py: 1.5,
+                  px: { xs: 2, sm: 4 },
+                  py: { xs: 1, sm: 1.5 },
+                  fontSize: { xs: '0.875rem', sm: '1rem' },
                 }}
               >
                 Saiba Mais
@@ -97,9 +97,10 @@ export default function Home() {
                   borderColor: '#00A86B',
                   color: '#00A86B',
                   fontWeight: 600,
-                  px: 4,
-                  py: 1.5,
+                  px: { xs: 2, sm: 4 },
+                  py: { xs: 1, sm: 1.5 },
                   border: '2px solid #00A86B',
+                  fontSize: { xs: '0.875rem', sm: '1rem' },
                 }}
               >
                 Entre em Contato
@@ -128,7 +129,7 @@ export default function Home() {
           Nossas Principais Funcionalidades
         </Typography>
 
-        <Grid container spacing={3}>
+        <Grid container spacing={{ xs: 2, sm: 3 }}>
           {features.map((feature, index) => (
             <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
               <MotionCard
@@ -187,7 +188,7 @@ export default function Home() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        sx={{ mt: 8, mb: 8 }}
+        sx={{ mt: { xs: 6, md: 8 }, mb: { xs: 6, md: 8 } }}
       >
         <Typography
           variant="h2"
@@ -201,7 +202,7 @@ export default function Home() {
           Como Funciona?
         </Typography>
 
-        <Grid container spacing={3}>
+        <Grid container spacing={{ xs: 2, sm: 3 }}>
           {[
             { step: '1', title: 'Fotografe', desc: 'Tire uma foto do lixo/poluição na rua com seu dispositivo' },
             { step: '2', title: 'Envie', desc: 'Compartilhe a foto em nossa plataforma' },
@@ -247,7 +248,7 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
         sx={{
-          p: 4,
+          p: { xs: 3, md: 4 },
           backgroundColor: '#F5F5F5',
           border: '2px solid #00A86B',
           borderRadius: '12px',
@@ -260,7 +261,7 @@ export default function Home() {
         <Typography variant="body1" sx={{ mb: 3, color: '#666666' }}>
           Junte-se a milhares de ativistas ambientais denunciando poluição e aprendendo sobre sustentabilidade!
         </Typography>
-        <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
+        <Box sx={{ display: 'flex', gap: { xs: 1, sm: 2 }, justifyContent: 'center', flexWrap: 'wrap' }}>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button
               variant="contained"
@@ -269,8 +270,9 @@ export default function Home() {
                 backgroundColor: '#00A86B',
                 color: '#FFFFFF',
                 fontWeight: 600,
-                px: 4,
-                py: 1.5,
+                px: { xs: 2, sm: 4 },
+                py: { xs: 1, sm: 1.5 },
+                fontSize: { xs: '0.875rem', sm: '1rem' },
               }}
               endIcon={<DownloadIcon />}
             >
@@ -286,9 +288,10 @@ export default function Home() {
                   borderColor: '#00A86B',
                   color: '#00A86B',
                   fontWeight: 600,
-                  px: 4,
-                  py: 1.5,
+                  px: { xs: 2, sm: 4 },
+                  py: { xs: 1, sm: 1.5 },
                   border: '2px solid #00A86B',
+                  fontSize: { xs: '0.875rem', sm: '1rem' },
                 }}
               >
                 Saiba Mais

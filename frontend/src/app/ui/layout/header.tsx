@@ -38,7 +38,7 @@ export default function Header() {
               component="div"
               sx={{
                 fontWeight: 700,
-                fontSize: '2rem',
+                fontSize: { xs: '1.25rem', sm: '1.75rem', md: '2rem' },
                 background: mode === 'light'
                   ? 'linear-gradient(135deg, #000000 0%, #00A86B 100%)'
                   : 'linear-gradient(135deg, #00A86B 0%, #00D77D 100%)',
@@ -57,7 +57,7 @@ export default function Header() {
             </Typography>
           </motion.div>
 
-          <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+          <Box sx={{ display: 'flex', gap: { xs: 0.5, sm: 1 }, alignItems: 'center' }}>
             {navItems.map((item) => (
               <motion.div
                 key={item.href}
@@ -74,7 +74,7 @@ export default function Header() {
                     sx={{
                       color: hoveredLink === item.href ? '#00A86B' : 'inherit',
                       fontWeight: 600,
-                      fontSize: '1rem',
+                      fontSize: { xs: '0.75rem', sm: '0.875rem', md: '1rem' },
                       position: 'relative',
                       overflow: 'hidden',
                       '&::after': {
