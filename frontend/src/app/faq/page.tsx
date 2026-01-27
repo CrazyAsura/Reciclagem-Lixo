@@ -10,28 +10,28 @@ const MotionCard = motion.create(Card);
 export default function FAQ() {
   const faqs = [
     {
-      question: 'O que é reciclagem?',
-      answer: 'Reciclagem é o processo de transformar resíduos em novos produtos, reduzindo a quantidade de lixo nos aterros sanitários e conservando recursos naturais.',
+      question: 'Como funciona o sistema de denúncia?',
+      answer: 'Você fotografa o lixo/poluição na rua, envia através do app, nosso sistema de IA valida se a foto é autêntica, e a denúncia é processada e adicionada ao mapa de poluição da sua região.',
     },
     {
-      question: 'Como posso começar a reciclar?',
-      answer: 'Comece separando seus resíduos em categorias: plástico, papel, vidro e metal. Procure os pontos de coleta de reciclagem mais próximos de você.',
+      question: 'Como o sistema de IA detecta fotos geradas por IA?',
+      answer: 'Utilizamos modelos avançados de machine learning que analisam padrões, texturas e metadados da imagem para identificar se foi gerada por IA ou fotografada com um dispositivo real.',
     },
     {
-      question: 'Quais materiais podem ser reciclados?',
-      answer: 'Papel, papelão, vidro, plástico, metal, alumínio e outros materiais específicos podem ser reciclados. Confira com sua coleta local os materiais aceitos.',
+      question: 'Posso receber denúncias de outras pessoas?',
+      answer: 'Sim! Você receberá notificações sobre denúncias perto de você e poderá conversar com outros usuários através do chat integrado e da rede social.',
     },
     {
-      question: 'Por que reciclar é importante?',
-      answer: 'Reciclar reduz o consumo de recursos naturais, economiza energia, reduz poluição e ajuda a proteger nosso planeta para as futuras gerações.',
+      question: 'Os cursos ambientais são gratuitos?',
+      answer: 'Oferecemos cursos básicos gratuitos para todos os usuários, com opções de cursos premium com certificados para usuários que desejam aprofundar seus conhecimentos.',
     },
     {
-      question: 'Qual é a diferença entre reciclar e reutilizar?',
-      answer: 'Reciclar é transformar materiais em novos produtos. Reutilizar é usar um item novamente sem transformação. Ambas são práticas sustentáveis importantes.',
+      question: 'Como os dados de denúncias são usados?',
+      answer: 'Os dados são compilados em mapas de poluição por região, compartilhados com órgãos ambientais e usados para conscientização e planejamento de ações de limpeza comunitária.',
     },
     {
-      question: 'Como a Recicla+ pode me ajudar?',
-      answer: 'Oferecemos conteúdo educativo, dicas práticas, comunidade engajada e ferramentas para você acompanhar seu impacto ambiental.',
+      question: 'Minha privacidade é protegida?',
+      answer: 'Sim, você pode optar por manter seu perfil anônimo ao fazer denúncias. Seus dados pessoais não são compartilhados com terceiros sem consentimento.',
     },
   ];
 
@@ -65,7 +65,7 @@ export default function FAQ() {
           }}
         />
         <Typography variant="h5" sx={{ color: '#666666', fontWeight: 400 }}>
-          Encontre respostas para suas dúvidas sobre reciclagem
+          Dúvidas sobre como usar a plataforma Recicla+
         </Typography>
       </MotionBox>
 

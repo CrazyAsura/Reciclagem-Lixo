@@ -84,7 +84,7 @@ export default function Contact() {
           }}
         />
         <Typography variant="h5" sx={{ color: '#666666', fontWeight: 400 }}>
-          Gostaria de saber mais? Envie uma mensagem para nós
+          Tem dúvidas? Sugestões? Queremos ouvir você!
         </Typography>
       </MotionBox>
 

@@ -66,7 +66,7 @@ export default function About() {
                   Nossa Missão
                 </Typography>
                 <Typography variant="body1" sx={{ color: '#666666', lineHeight: 1.8 }}>
-                  Nossa missão é democratizar a educação ambiental e promover práticas sustentáveis que tragam impacto positivo no planeta. Acreditamos que cada ação conta e que juntos podemos fazer diferença.
+                  Criar uma plataforma inovadora que capacite cidadãos a fotografar e denunciar poluição ambiental, utilizando tecnologia de IA para garantir autenticidade, enquanto promove educação ambiental e conecta uma comunidade de ativistas sustentáveis.
                 </Typography>
               </CardContent>
             </Card>
@@ -93,7 +93,7 @@ export default function About() {
                   Nossa Visão
                 </Typography>
                 <Typography variant="body1" sx={{ color: '#666666', lineHeight: 1.8 }}>
-                  Ser a plataforma líder em educação sustentável, inspirando milhões de pessoas a adotarem práticas responsáveis. Queremos construir um futuro onde a sustentabilidade seja parte do cotidiano de todos.
+                  Ser a plataforma número 1 em monitoramento ambiental cidadão, transformando cada pessoa em um agente de mudança. Imaginar um futuro onde a poluição é reduzida através da denúncia participativa, educação contínua e comunidade engajada.
                 </Typography>
               </CardContent>
             </Card>
@@ -123,10 +123,10 @@ export default function About() {
 
         <Grid container spacing={3}>
           {[
-            { title: 'Sustentabilidade', desc: 'Compromisso com o futuro do planeta' },
-            { title: 'Transparência', desc: 'Honestidade em todas as nossas ações' },
-            { title: 'Inovação', desc: 'Busca contínua por melhores soluções' },
-            { title: 'Comunidade', desc: 'Força no trabalho colaborativo' },
+            { title: 'Transparência', desc: 'Verificação autêntica de denúncias com IA' },
+            { title: 'Comunidade', desc: 'Chat e rede social para engajamento' },
+            { title: 'Educação', desc: 'Cursos ambientais de qualidade' },
+            { title: 'Impacto', desc: 'Mudança real no ambiente urbano' },
           ].map((value, idx) => (
             <Grid item xs={12} sm={6} md={3} key={idx}>
               <MotionCard

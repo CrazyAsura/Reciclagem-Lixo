@@ -10,24 +10,24 @@ const MotionCard = motion.create(Card);
 export default function Home() {
   const features = [
     {
-      title: 'Sustentabilidade',
-      description: 'Aprenda como contribuir para um planeta mais verde.',
-      icon: '🌱',
+      title: 'Fotografe e Denuncie',
+      description: 'Capture fotos de lixo na rua e denuncie locais com poluição ambiental.',
+      icon: '📸',
     },
     {
-      title: 'Educação',
-      description: 'Conteúdo educativo sobre reciclagem e preservação ambiental.',
-      icon: '📚',
+      title: 'Análise com IA',
+      description: 'Sistema avançado detecta se fotos foram geradas por IA ou são autênticas.',
+      icon: '🤖',
     },
     {
-      title: 'Comunidade',
-      description: 'Conecte-se com outras pessoas que se importam com o meio ambiente.',
-      icon: '👥',
+      title: 'Comunidade Conectada',
+      description: 'Chat em tempo real e rede social com outros ativistas ambientais.',
+      icon: '💬',
     },
     {
-      title: 'Impacto',
-      description: 'Veja o impacto positivo que você causa todos os dias.',
-      icon: '🌍',
+      title: 'Cursos Ambientais',
+      description: 'Aprenda sobre sustentabilidade com nossos cursos de educação ambiental.',
+      icon: '🎓',
     },
   ];
 
@@ -52,7 +52,7 @@ export default function Home() {
             backgroundClip: 'text',
           }}
         >
-          ♻️ Bem-vindo ao Recicla+
+          ♻️ Recicla+ - Seu Olho para o Lixo
         </Typography>
         <Typography
           variant="h5"
@@ -62,7 +62,7 @@ export default function Home() {
             fontWeight: 400,
           }}
         >
-          Transformando a forma como pensamos sobre sustentabilidade
+          Denuncie poluição ambiental, receba cursos e conecte-se com a comunidade sustentável
         </Typography>
         <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -119,7 +119,7 @@ export default function Home() {
             fontWeight: 700,
           }}
         >
-          Por Que Escolher Recicla+?
+          Nossas Principais Funcionalidades
         </Typography>
 
         <Grid container spacing={3}>
@@ -168,6 +168,65 @@ export default function Home() {
         </Grid>
       </MotionBox>
 
+      {/* How It Works */}
+      <MotionBox
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        sx={{ mt: 8, mb: 8 }}
+      >
+        <Typography
+          variant="h2"
+          sx={{
+            mb: 6,
+            textAlign: 'center',
+            color: '#000000',
+            fontWeight: 700,
+          }}
+        >
+          Como Funciona?
+        </Typography>
+
+        <Grid container spacing={3}>
+          {[
+            { step: '1', title: 'Fotografe', desc: 'Tire uma foto do lixo/poluição na rua com seu dispositivo' },
+            { step: '2', title: 'Envie', desc: 'Compartilhe a foto em nossa plataforma' },
+            { step: '3', title: 'Analisamos', desc: 'Nosso sistema de IA verifica se a foto é autêntica' },
+            { step: '4', title: 'Aprenda', desc: 'Acesse cursos de educação ambiental e conecte-se' },
+          ].map((item, idx) => (
+            <Grid item xs={12} sm={6} md={3} key={idx}>
+              <MotionCard
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                sx={{
+                  border: '2px solid #00A86B',
+                  textAlign: 'center',
+                  p: 2,
+                  backgroundColor: '#F5F5F5',
+                  '&:hover': {
+                    borderColor: '#000000',
+                    boxShadow: '0 12px 24px rgba(0, 168, 107, 0.2)',
+                  },
+                }}
+              >
+                <Typography variant="h3" sx={{ color: '#00A86B', fontWeight: 700, mb: 1 }}>
+                  {item.step}
+                </Typography>
+                <Typography variant="h6" sx={{ fontWeight: 700, color: '#000000', mb: 1 }}>
+                  {item.title}
+                </Typography>
+                <Typography variant="body2" sx={{ color: '#666666' }}>
+                  {item.desc}
+                </Typography>
+              </MotionCard>
+            </Grid>
+          ))}
+        </Grid>
+      </MotionBox>
+
       {/* CTA Section */}
       <MotionBox
         initial={{ opacity: 0 }}
@@ -175,7 +234,6 @@ export default function Home() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
         sx={{
-          mt: 8,
           p: 4,
           backgroundColor: '#F5F5F5',
           border: '2px solid #00A86B',
@@ -187,23 +245,43 @@ export default function Home() {
           Pronto para Fazer a Diferença?
         </Typography>
         <Typography variant="body1" sx={{ mb: 3, color: '#666666' }}>
-          Junte-se à nossa comunidade e comece sua jornada sustentável hoje mesmo!
+          Junte-se a milhares de ativistas ambientais denunciando poluição e aprendendo sobre sustentabilidade!
         </Typography>
-        <Link href="/contact">
-          <Button
-            variant="contained"
-            size="large"
-            sx={{
-              backgroundColor: '#00A86B',
-              color: '#FFFFFF',
-              fontWeight: 600,
-              px: 4,
-              py: 1.5,
-            }}
-          >
-            Comece Agora
-          </Button>
-        </Link>
+        <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button
+              variant="contained"
+              size="large"
+              sx={{
+                backgroundColor: '#00A86B',
+                color: '#FFFFFF',
+                fontWeight: 600,
+                px: 4,
+                py: 1.5,
+              }}
+            >
+              Baixar App
+            </Button>
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link href="/contact">
+              <Button
+                variant="outlined"
+                size="large"
+                sx={{
+                  borderColor: '#00A86B',
+                  color: '#00A86B',
+                  fontWeight: 600,
+                  px: 4,
+                  py: 1.5,
+                  border: '2px solid #00A86B',
+                }}
+              >
+                Saiba Mais
+              </Button>
+            </Link>
+          </motion.div>
+        </Box>
       </MotionBox>
     </Container>
   );
