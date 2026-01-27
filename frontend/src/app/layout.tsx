@@ -6,6 +6,7 @@ import "./globals.css";
 import Header from "./ui/layout/header";
 import Footer from "./ui/layout/footer";
 import { MuiProvider } from "./libs/providers/MuiProvider";
+import { ThemeProvider } from "./libs/context/ThemeContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,11 +28,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <MuiProvider>
-          <Header />
-          {children}
-          <Footer />
-        </MuiProvider>
+        <ThemeProvider>
+          <MuiProvider>
+            <Header />
+            {children}
+            <Footer />
+          </MuiProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -151,9 +151,16 @@ export default function Home() {
                 }}
               >
                 <CardContent sx={{ textAlign: 'center', flexGrow: 1 }}>
-                  <Typography variant="h4" sx={{ mb: 2 }}>
-                    {feature.icon}
-                  </Typography>
+                  {feature.icon && (
+                    <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center' }}>
+                      <feature.icon
+                        sx={{
+                          fontSize: '3rem',
+                          color: '#00A86B',
+                        }}
+                      />
+                    </Box>
+                  )}
                   <Typography
                     variant="h6"
                     sx={{

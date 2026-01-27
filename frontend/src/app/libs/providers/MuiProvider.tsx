@@ -1,19 +1,29 @@
 'use client';
 
-import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { theme } from '../theme/theme';
+import { lightTheme, darkTheme } from '../theme/theme';
+import { useTheme } from '../context/ThemeContext';
 import React from 'react';
 
 interface MuiProviderProps {
   children: React.ReactNode;
 }
 
-export function MuiProvider({ children }: MuiProviderProps) {
+function MuiProviderContent({ children }: MuiProviderProps) {
+  const { mode } = useTheme();
+  const theme = mode === 'light' ? lightTheme : darkTheme;
+
   return (
-    <ThemeProvider theme={theme}>
+    <MuiThemeProvider theme={theme}>
       <CssBaseline />
       {children}
-    </ThemeProvider>
+    </MuiThemeProvider>
+  );
+}
+
+export function MuiProvider({ children }: MuiProviderProps) {
+  return (
+    <MuiProviderContent>{children}</MuiProviderContent>
   );
 }

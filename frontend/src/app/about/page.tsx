@@ -7,7 +7,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import SchoolIcon from '@mui/icons-material/School';
 import PublicIcon from '@mui/icons-material/Public';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
-import EcoIcon from '@mui/icons-material/Eco';
+import LeakRemoveIcon from '@mui/icons-material/LeakRemove';
 import ScienceIcon from '@mui/icons-material/Science';
 
 const MotionBox = motion.create(Box);
@@ -16,7 +16,7 @@ const MotionCard = motion.create(Card);
 export default function About() {
   const team = [
     { name: 'João Silva', role: 'Fundador & CEO', icon: BusinessCenterIcon },
-    { name: 'Maria Santos', role: 'Diretora de Sustentabilidade', icon: EcoIcon },
+    { name: 'Maria Santos', role: 'Diretora de Sustentabilidade', icon: LeakRemoveIcon },
     { name: 'Carlos Oliveira', role: 'Especialista em Reciclagem', icon: ScienceIcon },
   ];
 

@@ -1,14 +1,19 @@
 'use client';
 
-import { AppBar, Toolbar, Typography, Button, Box, Container } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Box, Container, IconButton } from '@mui/material';
 import Link from 'next/link';
 import { useState } from 'react';
 import { motion } from 'motion/react';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import { useTheme } from '../../libs/context/ThemeContext';
 
 const MotionButton = motion.create(Button);
+const MotionIconButton = motion.create(IconButton);
 
 export default function Header() {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+  const { mode, toggleTheme } = useTheme();
 
   const navItems = [
     { label: 'Home', href: '/' },
@@ -32,13 +37,17 @@ export default function Header() {
               sx={{
                 fontWeight: 700,
                 fontSize: '2rem',
-                background: 'linear-gradient(135deg, #000000 0%, #00A86B 100%)',
+                background: mode === 'light'
+                  ? 'linear-gradient(135deg, #000000 0%, #00A86B 100%)'
+                  : 'linear-gradient(135deg, #00A86B 0%, #00D77D 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
                 cursor: 'pointer',
                 '&:hover': {
-                  textShadow: '0 0 20px rgba(0, 168, 107, 0.3)',
+                  textShadow: mode === 'light'
+                    ? '0 0 20px rgba(0, 168, 107, 0.3)'
+                    : '0 0 20px rgba(0, 215, 125, 0.5)',
                 },
               }}
             >
@@ -46,7 +55,7 @@ export default function Header() {
             </Typography>
           </motion.div>
 
-          <Box sx={{ display: 'flex', gap: 1 }}>
+          <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
             {navItems.map((item) => (
               <motion.div
                 key={item.href}
@@ -61,7 +70,7 @@ export default function Header() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     sx={{
-                      color: hoveredLink === item.href ? '#00A86B' : '#000000',
+                      color: hoveredLink === item.href ? '#00A86B' : 'inherit',
                       fontWeight: 600,
                       fontSize: '1rem',
                       position: 'relative',
@@ -85,6 +94,35 @@ export default function Header() {
                 </Link>
               </motion.div>
             ))}
+
+            {/* Botão de tema */}
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <MotionIconButton
+                onClick={toggleTheme}
+                sx={{
+                  color: 'inherit',
+                  ml: 2,
+                  border: '2px solid #00A86B',
+                  borderRadius: '50%',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    backgroundColor: 'rgba(0, 168, 107, 0.1)',
+                    transform: 'rotate(20deg)',
+                  },
+                }}
+                whileHover={{ rotate: 180 }}
+                transition={{ duration: 0.6 }}
+              >
+                {mode === 'light' ? (
+                  <DarkModeIcon sx={{ fontSize: '1.5rem' }} />
+                ) : (
+                  <WbSunnyIcon sx={{ fontSize: '1.5rem', color: '#FFD700' }} />
+                )}
+              </MotionIconButton>
+            </motion.div>
           </Box>
         </Toolbar>
       </Container>
