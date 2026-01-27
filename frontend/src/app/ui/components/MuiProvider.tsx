@@ -2,8 +2,8 @@
 
 import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { lightTheme, darkTheme } from '../theme/theme';
-import { useAppSelector } from '../state/hooks';
+import { lightTheme, darkTheme } from '../../libs/theme/theme';
+import { useAppSelector } from '../../libs/state/hooks';
 import React from 'react';
 
 interface MuiProviderProps {
