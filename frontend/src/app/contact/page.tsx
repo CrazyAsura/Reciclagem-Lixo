@@ -90,7 +90,7 @@ export default function Contact() {
 
       <Grid container spacing={4}>
         {/* Contact Form */}
-        <Grid item xs={12} md={7}>
+        <Grid size={{ xs: 12, md: 7 }}>
           <MotionBox
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -212,7 +212,7 @@ export default function Contact() {
         </Grid>
 
         {/* Contact Info */}
-        <Grid item xs={12} md={5}>
+        <Grid size={{ xs: 12, md: 5 }}>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
             {contactInfo.map((info, index) => (
               <MotionCard

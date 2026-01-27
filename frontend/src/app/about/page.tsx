@@ -46,7 +46,7 @@ export default function About() {
 
       {/* Mission & Vision */}
       <Grid container spacing={4} sx={{ mb: 8 }}>
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <MotionBox
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -73,7 +73,7 @@ export default function About() {
           </MotionBox>
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <MotionBox
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -128,7 +128,7 @@ export default function About() {
             { title: 'Educação', desc: 'Cursos ambientais de qualidade' },
             { title: 'Impacto', desc: 'Mudança real no ambiente urbano' },
           ].map((value, idx) => (
-            <Grid item xs={12} sm={6} md={3} key={idx}>
+            <Grid size={{ xs: 12, sm: 6, md: 3 }} key={idx}>
               <MotionCard
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -177,7 +177,7 @@ export default function About() {
 
         <Grid container spacing={4}>
           {team.map((member, idx) => (
-            <Grid item xs={12} sm={6} md={4} key={idx}>
+            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={idx}>
               <MotionCard
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
