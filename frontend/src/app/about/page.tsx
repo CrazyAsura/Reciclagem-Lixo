@@ -2,15 +2,22 @@
 
 import { Container, Box, Typography, Card, CardContent, Grid, Avatar, Button } from '@mui/material';
 import { motion } from 'motion/react';
+import VerifiedIcon from '@mui/icons-material/Verified';
+import PeopleIcon from '@mui/icons-material/People';
+import SchoolIcon from '@mui/icons-material/School';
+import PublicIcon from '@mui/icons-material/Public';
+import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
+import EcoIcon from '@mui/icons-material/Eco';
+import ScienceIcon from '@mui/icons-material/Science';
 
 const MotionBox = motion.create(Box);
 const MotionCard = motion.create(Card);
 
 export default function About() {
   const team = [
-    { name: 'João Silva', role: 'Fundador & CEO', icon: '👨‍💼' },
-    { name: 'Maria Santos', role: 'Diretora de Sustentabilidade', icon: '👩‍💼' },
-    { name: 'Carlos Oliveira', role: 'Especialista em Reciclagem', icon: '👨‍🔬' },
+    { name: 'João Silva', role: 'Fundador & CEO', icon: BusinessCenterIcon },
+    { name: 'Maria Santos', role: 'Diretora de Sustentabilidade', icon: EcoIcon },
+    { name: 'Carlos Oliveira', role: 'Especialista em Reciclagem', icon: ScienceIcon },
   ];
 
   return (
@@ -194,7 +201,16 @@ export default function About() {
                 }}
               >
                 <Typography variant="h3" sx={{ mb: 2 }}>
-                  {member.icon}
+                  {member.icon && (
+                    <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
+                      <member.icon
+                        sx={{
+                          fontSize: '3rem',
+                          color: '#00A86B',
+                        }}
+                      />
+                    </Box>
+                  )}
                 </Typography>
                 <Typography variant="h6" sx={{ fontWeight: 700, color: '#000000', mb: 1 }}>
                   {member.name}

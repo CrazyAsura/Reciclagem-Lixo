@@ -5,6 +5,14 @@ import { motion } from 'motion/react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import SendIcon from '@mui/icons-material/Send';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/Phone';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const MotionBox = motion.create(Box);
 const MotionCard = motion.create(Card);
@@ -40,17 +48,17 @@ export default function Contact() {
     {
       title: 'Email',
       value: 'contato@reciclaplus.com',
-      icon: '📧',
+      icon: EmailIcon,
     },
     {
       title: 'Telefone',
       value: '(11) 98765-4321',
-      icon: '📱',
+      icon: PhoneIcon,
     },
     {
       title: 'Endereço',
       value: 'São Paulo, SP - Brasil',
-      icon: '📍',
+      icon: LocationOnIcon,
     },
   ];
 
@@ -200,6 +208,7 @@ export default function Contact() {
                             backgroundColor: '#00854D',
                           },
                         }}
+                        endIcon={<SendIcon />}
                       >
                         Enviar Mensagem
                       </Button>
@@ -230,9 +239,13 @@ export default function Contact() {
                 }}
               >
                 <CardContent sx={{ textAlign: 'center' }}>
-                  <Typography variant="h3" sx={{ mb: 2 }}>
-                    {info.icon}
-                  </Typography>
+                  <info.icon
+                    sx={{
+                      fontSize: '2.5rem',
+                      color: '#00A86B',
+                      mb: 2,
+                    }}
+                  />
                   <Typography variant="h6" sx={{ fontWeight: 700, color: '#000000', mb: 1 }}>
                     {info.title}
                   </Typography>

@@ -1,8 +1,14 @@
 'use client';
 
-import { Box, Container, Typography, Grid, Link as MuiLink, Divider } from '@mui/material';
+import { Box, Container, Typography, Grid, Link as MuiLink, Divider, IconButton } from '@mui/material';
 import { motion } from 'motion/react';
 import Link from 'next/link';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/Phone';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -20,10 +26,10 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { name: 'Facebook', icon: '📘', url: '#' },
-    { name: 'Twitter', icon: '🐦', url: '#' },
-    { name: 'Instagram', icon: '📷', url: '#' },
-    { name: 'LinkedIn', icon: '💼', url: '#' },
+    { name: 'Facebook', icon: FacebookIcon, url: '#' },
+    { name: 'Twitter', icon: TwitterIcon, url: '#' },
+    { name: 'Instagram', icon: InstagramIcon, url: '#' },
+    { name: 'LinkedIn', icon: LinkedInIcon, url: '#' },
   ];
 
   return (
@@ -139,25 +145,46 @@ export default function Footer() {
               <Typography variant="h6" sx={{ mb: 2, fontWeight: 700, color: '#00A86B' }}>
                 Contato & Social
               </Typography>
-              <Typography variant="body2" sx={{ color: '#CCCCCC', mb: 1 }}>
-                📧 contato@reciclaplus.com
-              </Typography>
-              <Typography variant="body2" sx={{ color: '#CCCCCC', mb: 3 }}>
-                📱 (11) 98765-4321
-              </Typography>
-              <Box sx={{ display: 'flex', gap: 1 }}>
-                {socialLinks.map((social) => (
-                  <motion.div
-                    key={social.name}
-                    whileHover={{ scale: 1.2, rotate: 5 }}
-                    whileTap={{ scale: 0.9 }}
-                    style={{ cursor: 'pointer', fontSize: '1.3rem' }}
-                  >
-                    <a href={social.url} title={social.name}>
-                      {social.icon}
-                    </a>
-                  </motion.div>
-                ))}
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
+                <EmailIcon sx={{ color: '#00A86B', fontSize: '1.2rem' }} />
+                <Typography variant="body2" sx={{ color: '#CCCCCC' }}>
+                  contato@reciclaplus.com
+                </Typography>
+              </Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 3 }}>
+                <PhoneIcon sx={{ color: '#00A86B', fontSize: '1.2rem' }} />
+                <Typography variant="body2" sx={{ color: '#CCCCCC' }}>
+                  (11) 98765-4321
+                </Typography>
+              </Box>
+              <Box sx={{ display: 'flex', gap: 0.5 }}>
+                {socialLinks.map((social) => {
+                  const IconComponent = social.icon;
+                  return (
+                    <motion.div
+                      key={social.name}
+                      whileHover={{ scale: 1.2, rotate: 5 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      <IconButton
+                        href={social.url}
+                        component="a"
+                        title={social.name}
+                        sx={{
+                          color: '#FFFFFF',
+                          backgroundColor: 'rgba(0, 168, 107, 0.1)',
+                          '&:hover': {
+                            backgroundColor: '#00A86B',
+                            color: '#000000',
+                          },
+                          transition: 'all 0.3s ease',
+                        }}
+                      >
+                        <IconComponent fontSize="small" />
+                      </IconButton>
+                    </motion.div>
+                  );
+                })}
               </Box>
             </motion.div>
           </Grid>

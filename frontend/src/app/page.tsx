@@ -3,6 +3,12 @@
 import { Container, Box, Typography, Button, Grid, Card, CardContent, CardActions } from '@mui/material';
 import { motion } from 'motion/react';
 import Link from 'next/link';
+import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
+import SmartToyIcon from '@mui/icons-material/SmartToy';
+import GroupsIcon from '@mui/icons-material/Groups';
+import SchoolIcon from '@mui/icons-material/School';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import DownloadIcon from '@mui/icons-material/Download';
 
 const MotionBox = motion.create(Box);
 const MotionCard = motion.create(Card);
@@ -12,22 +18,22 @@ export default function Home() {
     {
       title: 'Fotografe e Denuncie',
       description: 'Capture fotos de lixo na rua e denuncie locais com poluição ambiental.',
-      icon: '📸',
+      icon: PhotoCameraIcon,
     },
     {
       title: 'Análise com IA',
       description: 'Sistema avançado detecta se fotos foram geradas por IA ou são autênticas.',
-      icon: '🤖',
+      icon: SmartToyIcon,
     },
     {
       title: 'Comunidade Conectada',
       description: 'Chat em tempo real e rede social com outros ativistas ambientais.',
-      icon: '💬',
+      icon: GroupsIcon,
     },
     {
       title: 'Cursos Ambientais',
       description: 'Aprenda sobre sustentabilidade com nossos cursos de educação ambiental.',
-      icon: '🎓',
+      icon: SchoolIcon,
     },
   ];
 
@@ -259,6 +265,7 @@ export default function Home() {
                 px: 4,
                 py: 1.5,
               }}
+              endIcon={<DownloadIcon />}
             >
               Baixar App
             </Button>
