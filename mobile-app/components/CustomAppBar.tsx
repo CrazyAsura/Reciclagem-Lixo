@@ -14,13 +14,13 @@ import {
 import { useAppSelector, useAppDispatch } from '@/libs/redux-toolkit/redux-persist/store';
 import { toggleTheme } from '@/libs/redux-toolkit/themeSlice';
 import { NotificationModal } from './NotificationModal';
+import { useNotificationsQuery } from '@/libs/api/react query/notification-query';
+import { Notification } from '@/libs/types/notification';
 
 const sunIcon = 'white-balance-sunny';
 const moonIcon = 'weather-night';
 
 import { usePathname } from 'expo-router';
-
-// ... existing imports
 
 import { useRouter } from 'expo-router';
 import { logout } from '@/libs/redux-toolkit/authSlice';
@@ -34,6 +34,8 @@ export default function CustomAppBar() {
   const dispatch = useAppDispatch();              
   const mode = useAppSelector((state) => state.theme.mode); 
   const { isLoggedIn, user } = useAppSelector((state) => state.auth);
+  const { data: notifications = [] } = useNotificationsQuery(user?.id);
+  const unreadCount = notifications.filter((n: Notification) => !n.read).length;
 
   const theme = useTheme();
 
@@ -158,7 +160,7 @@ export default function CustomAppBar() {
               onPress={() => setNotificationVisible(true)}
               iconColor={theme.colors.onSurface}
             />
-            <Badge size={16} style={styles.badge}>1</Badge>
+            {unreadCount > 0 && <Badge size={16} style={styles.badge}>{unreadCount}</Badge>}
           </View>
 
           <TouchableOpacity onPress={onToggleTheme} style={styles.iconWrapper}>

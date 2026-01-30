@@ -3,6 +3,7 @@ import { ObjectId } from 'mongodb';
 import { Phone } from "../../phone/entities/phone.entity";
 import { Address } from "../../address/entities/address.entity";
 import { ROLE } from "../../common/enum/roles";
+import { Notification } from "../../notification/entities/notification.entity";
 
 @Entity('users')
 export class User {
@@ -41,4 +42,7 @@ export class User {
     phones: Phone[];
     @OneToMany(() => Address, (address) => address.user, { cascade: true })
     addresses: Address[];
+    
+    @OneToMany(() => Notification, (notification) => notification.user, { cascade: true })
+    notifications: Notification[];
 }

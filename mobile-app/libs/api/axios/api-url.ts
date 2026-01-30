@@ -5,7 +5,10 @@ export const API_URL = {
         LOGOUT: '/auth/logout',
         PROFILE: '/auth/profile',
         EDIT_PROFILE: '/auth/edit-profile',
+    },
+    NOTIFICATIONS: {
+        BASE: '/notifications',
+        USER: '/notifications/user',
+        READ: '/notifications', // :id/read
     }
-
-
 }
