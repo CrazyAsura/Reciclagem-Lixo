@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { LoginAuthDto } from './dto/login-auth.dto';
 import { RegisterAuthDto } from './dto/register-auth.dto';
 import { LogoutAuthDto } from './dto/logout-auth.dto';
+import { EditProfileAuthDto } from './dto/edit-profile-auth.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -26,6 +27,11 @@ export class AuthController {
   @Get('profile/:id')
   getProfile(@Param('id') id: string) {
     return this.authService.getProfile(id);
+  }
+
+  @Patch('edit-profile')
+  editProfile(@Body() editProfileAuthDto: EditProfileAuthDto) {
+    return this.authService.editProfile(editProfileAuthDto);
   }
 
 }

@@ -7,28 +7,42 @@ import {
   IconButton,
   Menu,
   Divider,
+  Badge,
 } from 'react-native-paper';
 
 // Importe os hooks tipados do arquivo correto
 import { useAppSelector, useAppDispatch } from '@/libs/redux-toolkit/redux-persist/store';
 import { toggleTheme } from '@/libs/redux-toolkit/themeSlice';
+import { NotificationModal } from './NotificationModal';
 
 const sunIcon = 'white-balance-sunny';
 const moonIcon = 'weather-night';
 
+import { usePathname } from 'expo-router';
+
+// ... existing imports
+
+import { useRouter } from 'expo-router';
+import { logout } from '@/libs/redux-toolkit/authSlice';
+import { useLogoutAuthQuery } from '@/libs/api/react query/auth-query';
+import { Alert } from 'react-native';
+
 export default function CustomAppBar() {
-  const dispatch = useAppDispatch();              // ← correto
-  const mode = useAppSelector((state) => state.theme.mode); // ← tipado e correto
-  const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
+  const router = useRouter();
+  const logoutMutation = useLogoutAuthQuery();
+  const pathname = usePathname();
+  const dispatch = useAppDispatch();              
+  const mode = useAppSelector((state) => state.theme.mode); 
+  const { isLoggedIn, user } = useAppSelector((state) => state.auth);
 
   const theme = useTheme();
 
   const isDark = mode === 'dark';
 
   const rotateAnim = useRef(new Animated.Value(0)).current;
-  const avatarRef = useRef<View>(null);
 
   const [menuVisible, setMenuVisible] = useState(false);
+  const [notificationVisible, setNotificationVisible] = useState(false);
 
   const toggleMenu = () => setMenuVisible((prev) => !prev);
   const closeMenu = () => setMenuVisible(false);
@@ -49,11 +63,31 @@ export default function CustomAppBar() {
     outputRange: ['0deg', '360deg'],
   });
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     closeMenu();
-    console.log('Logout realizado!');
-    // sua lógica de logout aqui
+    try {
+      if (user) {
+        // Attempt API logout
+        await logoutMutation.mutateAsync({
+          id: user.id,
+          email: user.email,
+          role: user.role || 'USER',
+          isActive: user.isActive ?? true,
+        });
+      }
+    } catch (error) {
+      console.error('Logout API error:', error);
+      // Continue to local logout even if API fails
+    } finally {
+      dispatch(logout());
+      router.replace('/');
+    }
   };
+
+  // Hide CustomAppBar on auth screens and modals
+  if (pathname === '/' || pathname === '/register' || pathname === '/password-reset' || pathname === '/edit-profile' || pathname === '/settings') {
+    return null;
+  }
 
   return (
     <>
@@ -68,11 +102,19 @@ export default function CustomAppBar() {
             onDismiss={closeMenu}
             anchor={
               <TouchableOpacity onPress={toggleMenu}>
-                <Avatar.Image
-                  size={40}
-                  source={{ uri: 'https://randomuser.me/api/portraits/men/32.jpg' }}
-                  style={{ marginLeft: 8 }}
-                />
+                {user?.photo ? (
+                  <Avatar.Image
+                    size={40}
+                    source={{ uri: user.photo }}
+                    style={{ marginLeft: 8 }}
+                  />
+                ) : (
+                  <Avatar.Icon
+                    size={40}
+                    icon="account"
+                    style={{ marginLeft: 8, backgroundColor: theme.colors.surfaceVariant }}
+                  />
+                )}
               </TouchableOpacity>
             }
             contentStyle={{ borderRadius: 12, elevation: 8, marginTop: 40 }}
@@ -80,7 +122,7 @@ export default function CustomAppBar() {
             <Menu.Item
               onPress={() => {
                 closeMenu();
-                console.log('Ir para Perfil');
+                router.push('/(tabs)/profile');
               }}
               title="Perfil"
               leadingIcon="account-circle-outline"
@@ -88,7 +130,7 @@ export default function CustomAppBar() {
             <Menu.Item
               onPress={() => {
                 closeMenu();
-                console.log('Ir para Configurações');
+                router.push('/settings');
               }}
               title="Configurações"
               leadingIcon="cog-outline"
@@ -109,6 +151,16 @@ export default function CustomAppBar() {
         />
 
         <View style={styles.actionsContainer}>
+          <View>
+            <IconButton
+              icon="bell-outline"
+              size={24}
+              onPress={() => setNotificationVisible(true)}
+              iconColor={theme.colors.onSurface}
+            />
+            <Badge size={16} style={styles.badge}>1</Badge>
+          </View>
+
           <TouchableOpacity onPress={onToggleTheme} style={styles.iconWrapper}>
             <Animated.View style={{ transform: [{ rotate: spin }] }}>
               <IconButton
@@ -120,6 +172,11 @@ export default function CustomAppBar() {
           </TouchableOpacity>
         </View>
       </Appbar.Header>
+
+      <NotificationModal 
+        visible={notificationVisible} 
+        onDismiss={() => setNotificationVisible(false)} 
+      />
     </>
   );
 }
@@ -130,6 +187,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginRight: 8,
+    gap: 0,
   },
   iconWrapper: { padding: 4 },
+  badge: {
+    position: 'absolute',
+    top: 8,
+    right: 8,
+    backgroundColor: '#ff3b30',
+  }
 });

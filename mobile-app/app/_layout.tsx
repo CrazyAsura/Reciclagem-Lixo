@@ -30,6 +30,8 @@ export default function RootLayout() {
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
                 <Stack.Screen name="register" options={{ headerShown: false }} />
                 <Stack.Screen name="password-reset" options={{ headerShown: false }} />
+                <Stack.Screen name="edit-profile" options={{ presentation: 'modal', headerShown: false }} />
+                <Stack.Screen name="settings" options={{ presentation: 'modal', headerShown: false }} />
                 <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
               </Stack>
           </ThemedProvider>

@@ -20,4 +20,6 @@ export class EditProfileAuthDto {
     role: ROLE;
     @IsBoolean()
     isActive: boolean;
+    @IsString()
+    photo?: string;
 }

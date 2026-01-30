@@ -35,9 +35,31 @@ import { login } from '@/libs/redux-toolkit/authSlice';
 import { z } from 'zod';
 type LoginSchema = z.infer<typeof loginSchema>;
 
+import { useSelector } from 'react-redux';
+
+// ... existing imports
+
 export default function LoginScreen() {
   const router = useRouter();
   const theme = useTheme();
+  const { isLoggedIn } = useSelector((state: any) => state.auth);
+
+  // Redirect if already logged in
+  if (isLoggedIn) {
+     // Use a small timeout or useEffect to avoid rendering issues during navigation state updates,
+     // or just return null and redirect.
+     // Better approach:
+  }
+  
+  // React Hook for redirect
+  React.useEffect(() => {
+      if (isLoggedIn) {
+          router.replace('/(tabs)/historic-photos');
+      }
+  }, [isLoggedIn]);
+
+  if (isLoggedIn) return null; // Prevent flicker
+
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   

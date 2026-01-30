@@ -32,6 +32,9 @@ export class User {
     isActive: boolean;
 
     @Column({ nullable: true })
+    photo: string;
+
+    @Column({ nullable: true })
     token: string | null;
 
     @OneToMany(() => Phone, (phone) => phone.user, { cascade: true })

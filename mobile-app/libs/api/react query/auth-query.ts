@@ -34,3 +34,11 @@ export const useProfileAuthQuery = () => {
         }
     })
 }
+
+export const useEditProfileAuthQuery = () => {
+    return useMutation({
+        mutationFn: (data: any) => {
+            return authService.editProfile(data);
+        }
+    })
+}

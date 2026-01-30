@@ -11,6 +11,7 @@ import { JwtService } from '@nestjs/jwt';
 import { Phone } from '../phone/entities/phone.entity';
 import { Address } from '../address/entities/address.entity';
 import { ObjectId } from 'mongodb';
+import * as zlib from 'zlib';
 
 @Injectable()
 export class AuthService {
@@ -96,7 +97,23 @@ export class AuthService {
   }
 
   async editProfile(editProfileAuthDto: EditProfileAuthDto){
-    const { id, email, password, role, isActive } = editProfileAuthDto;
+    const { id, name, birthDate, gender, email, password, role, isActive, photo } = editProfileAuthDto;
+
+    let finalPhoto = photo;
+    if (photo && photo.startsWith('zipped:')) {
+      try {
+        const base64Data = photo.replace('zipped:', '');
+        const compressedBuffer = Buffer.from(base64Data, 'base64');
+        const decompressedBuffer = zlib.gunzipSync(compressedBuffer);
+        // Convert back to base64 string for storage
+        const imageBase64 = decompressedBuffer.toString('base64');
+        finalPhoto = `data:image/jpeg;base64,${imageBase64}`;
+      } catch (e) {
+        console.error('Decompression failed', e);
+        throw new Error('Invalid image data');
+      }
+    }
+
     const user = await this.authRepository.findOne({
       where: {
         id: new ObjectId(id),
@@ -105,11 +122,21 @@ export class AuthService {
     if (!user) {
       throw new Error('User not found');
     }
-    return this.authRepository.update(id.toString(), {
+
+    const isPasswordValid = await argon2.verify(user.password, password);
+    if (!isPasswordValid) {
+      throw new Error('Invalid password');
+    }
+
+    return this.authRepository.update({ id: new ObjectId(id) }, {
+      name,
+      birthDate,
+      gender,
       email,
       password: await argon2.hash(password),
       role,
       isActive,
+      photo: finalPhoto,
     });
   }
 }

@@ -45,6 +45,11 @@ export class AuthService {
         return response.data;
     }
 
+    async editProfile(data: any) {
+        const response = await api.patch(API_URL.AUTH.EDIT_PROFILE, data);
+        return response.data;
+    }
+
     async logout(data: { id: string; email: string; role: string; isActive: boolean }) {
         const response = await api.post(API_URL.AUTH.LOGOUT, data);
         return response.data;

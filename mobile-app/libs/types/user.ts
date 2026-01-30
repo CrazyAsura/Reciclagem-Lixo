@@ -7,6 +7,9 @@ export type User = {
     cpf: string;
     birthDate: string;
     email: string;
+    photo?: string;
+    role?: string;
+    isActive?: boolean;
     phone: Phone;
     address: Address;
 }
